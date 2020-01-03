@@ -18,11 +18,11 @@ const Header: React.FC = () => {
           >
             <span css={styles.headText}>
               <img src={star} css={styles.star} />
-              DIMI TRANDING REPO
+              DIMI TRENDING REPO
             </span>
             <span
               css={css`
-                color: grey;
+                color: #586069;
               `}
             >
               디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트
@@ -39,7 +39,7 @@ const Header: React.FC = () => {
             레포지토리
           </NavLink>
           <NavLink
-            to="/developers"
+            to="/developer"
             css={styles.menu}
             activeStyle={{ color: "#e81572" }}
           >
@@ -71,7 +71,7 @@ const styles = {
     align-items: center;
   `,
   logo: css`
-    width: 70px;
+    width: 65px;
     margin-right: 10px;
   `,
   headText: css`
@@ -94,7 +94,7 @@ const styles = {
     text-decoration: none;
     font-size: 20px;
     color: #586069;
-    margin-right: 10px;
+    margin-left: 15px;
   `
 };
 

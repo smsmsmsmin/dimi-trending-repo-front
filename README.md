@@ -1,4 +1,4 @@
-# dimi-tranding-repo-front
+# dimi-trending-repo-front
 
 > 디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트의 Front-end 소스코드입니다.
 
