@@ -1,15 +1,5 @@
-# cra-template
+# dimi-tranding-repo-front
 
-> 기본적인 프로젝트 구조와 모듈이 설치되어있는 템플릿입니다. \
-> 프로젝트 시작할 때마다 귀찮아서 만든 템플릿.
+> 디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트의 Front-end 소스코드입니다.
 
-## 추가한 주요 모듈 리스트
-
-- customize-cra
-- @emotion/core
-- @emotion/css
-- @emotion/styled
-- @loadable/component
-- react-app-rewired
-- react-router
-- typescript
+> [Vue](https://github.com/cokia/dimi-tranding-repo)에서 React로 재 작성중입니다.
