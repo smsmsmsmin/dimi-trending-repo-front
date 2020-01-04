@@ -13,15 +13,16 @@ const PageWrap = (
       justify-content: center;
       width: 100%;
       min-height: 100vh;
-      padding-top: 25px;
       background-color: #f0f0f0;
     `}
-    {...props}
   >
     <div
       css={css`
-        width: 1000px;
+        width: 100%;
+        max-width: 1000px;
+        padding: 25px 15px;
       `}
+      {...props}
     >
       {props.children}
     </div>

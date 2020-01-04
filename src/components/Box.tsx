@@ -9,10 +9,12 @@ const Box = (
 ) => (
   <div
     css={css`
+      display: flex;
+      height: fit-content;
+      flex-direction: column;
       background: white;
       padding: 30px;
-      margin: 25px 0 0;
-      border-radius: 8px;
+      border-radius: 15px;
       box-shadow: -5px 10px 60px -13px rgba(0, 0, 0, 0.2);
     `}
     {...props}

@@ -3,43 +3,48 @@ import RepositoryRow from "../components/RepositoryRow";
 import PageWrap from "../components/PageWrap";
 import Box from "../components/Box";
 import PageTitle from "../components/PageTitle";
+import css from "@emotion/css";
 
 const Repository: React.FC = () => {
   return (
     <PageWrap>
       <PageTitle>레포지토리</PageTitle>
-      <Box>
+      <Box
+        css={css`
+          margin: 25px 0 0;
+        `}
+      >
         <RepositoryRow
           username="yooonspace"
           repository="dimi-trending-repo-front"
           language="TypeScript"
-          description="디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트"
+          description="디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트"
           star={300}
           forked={99}
         />
         <RepositoryRow
-            username="yooonspace"
-            repository="dimi-trending-repo-front"
-            language="TypeScript"
-            description="디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트"
-            star={300}
-            forked={99}
+          username="yooonspace"
+          repository="dimi-trending-repo-front"
+          language="TypeScript"
+          description="디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트"
+          star={300}
+          forked={99}
         />
         <RepositoryRow
-            username="yooonspace"
-            repository="dimi-trending-repo-front"
-            language="TypeScript"
-            description="디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트"
-            star={300}
-            forked={99}
+          username="yooonspace"
+          repository="dimi-trending-repo-front"
+          language="TypeScript"
+          description="디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트"
+          star={300}
+          forked={99}
         />
         <RepositoryRow
-            username="yooonspace"
-            repository="dimi-trending-repo-front"
-            language="TypeScript"
-            description="디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트"
-            star={300}
-            forked={99}
+          username="yooonspace"
+          repository="dimi-trending-repo-front"
+          language="TypeScript"
+          description="디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트"
+          star={300}
+          forked={99}
         />
       </Box>
     </PageWrap>

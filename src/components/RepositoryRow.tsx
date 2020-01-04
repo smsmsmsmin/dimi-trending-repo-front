@@ -62,6 +62,9 @@ const styles = {
   `,
   leftWrap: css`
     max-width: 80%;
+    @media (max-width: 767px) {
+      max-width: 100%;
+    }
   `,
   username: css`
     display: block;
@@ -88,6 +91,9 @@ const styles = {
   `,
   profileImageA: css`
     margin: auto 0;
+    @media (max-width: 767px) {
+      display: none;
+    }
   `,
   profileImage: css`
     max-width: 100px;

@@ -23,6 +23,9 @@ const Header: React.FC = () => {
             <span
               css={css`
                 color: #586069;
+                @media (max-width: 767px) {
+                  display: none;
+                }
               `}
             >
               디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트
@@ -64,15 +67,25 @@ const styles = {
     justify-content: space-between;
     align-items: center;
     padding: 30px;
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
   `,
   leftWrap: css`
     display: flex;
     flex-direction: row;
     align-items: center;
+    @media (max-width: 767px) {
+      flex-direction: column;
+    }
   `,
   logo: css`
     width: 65px;
     margin-right: 10px;
+    @media (max-width: 767px) {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
   `,
   headText: css`
     width: fit-content;
@@ -95,6 +108,9 @@ const styles = {
     font-size: 20px;
     color: #586069;
     margin-left: 15px;
+    & :first-of-type {
+      margin-left: 0;
+    }
   `
 };
 
