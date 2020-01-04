@@ -9,8 +9,10 @@ const PageTitle = (
 ) => (
   <span
     css={css`
+    display: block;
       font-size: 25px;
       font-weight: 700;
+      margin-bottom: 25px;
     `}
     {...props}
   />

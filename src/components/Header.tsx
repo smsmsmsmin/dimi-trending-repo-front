@@ -35,7 +35,7 @@ const Header: React.FC = () => {
         <div>
           <NavLink
             exact
-            to="/"
+            to="/repository"
             css={styles.menu}
             activeStyle={{ color: "#e81572" }}
           >
@@ -81,7 +81,7 @@ const styles = {
   `,
   logo: css`
     width: 65px;
-    margin-right: 10px;
+    margin-right: 15px;
     @media (max-width: 767px) {
       margin-right: 0;
       margin-bottom: 10px;

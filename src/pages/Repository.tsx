@@ -1,19 +1,13 @@
 import React from "react";
 import RepositoryRow from "../components/RepositoryRow";
-import PageWrap from "../components/PageWrap";
 import Box from "../components/Box";
 import PageTitle from "../components/PageTitle";
-import css from "@emotion/css";
 
 const Repository: React.FC = () => {
   return (
-    <PageWrap>
+    <>
       <PageTitle>레포지토리</PageTitle>
-      <Box
-        css={css`
-          margin: 25px 0 0;
-        `}
-      >
+      <Box>
         <RepositoryRow
           username="yooonspace"
           repository="dimi-trending-repo-front"
@@ -47,7 +41,7 @@ const Repository: React.FC = () => {
           forked={99}
         />
       </Box>
-    </PageWrap>
+    </>
   );
 };
 
