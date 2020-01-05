@@ -43,9 +43,14 @@ const Register: React.FC<RouteComponentProps> = props => {
   };
 
   return (
-    <Box>
-      <PageTitle>디미고인이신가요?</PageTitle>
-      <PageDescription>
+    <Box
+      css={css`
+        width: 50%;
+        margin: 0 auto;
+      `}
+    >
+      <PageTitle type="center">디미고인이신가요?</PageTitle>
+      <PageDescription type="center" margin="40">
         정보 수집을 위해 아래의 폼을 제출해주세요!
       </PageDescription>
       <form onSubmit={handleSubmit}>
@@ -88,7 +93,7 @@ const Register: React.FC<RouteComponentProps> = props => {
           css={css`
             display: flex;
             justify-content: flex-end;
-            margin-top: 25px;
+            padding-top: 40px;
           `}
         >
           <Button type="submit">제출</Button>

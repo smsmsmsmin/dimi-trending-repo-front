@@ -9,6 +9,7 @@ const Button = (
 ) => (
   <button
     css={css`
+      width: 100%;
       border: 0;
       color: white;
       padding: 7px 14px;

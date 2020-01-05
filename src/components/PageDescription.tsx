@@ -1,15 +1,18 @@
 import React from "react";
 import css from "@emotion/css";
 
-const PageDescription = (
-  props: React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLSpanElement>,
-    HTMLSpanElement
-  >
-) => (
+const PageDescription = ({
+  type,
+  margin,
+  ...props
+}: { type?: string; margin?: string } & React.DetailedHTMLProps<
+  React.HTMLAttributes<HTMLSpanElement>,
+  HTMLSpanElement
+>) => (
   <span
     css={css`
-      margin-bottom: 25px;
+      margin-bottom: ${margin || 25}px;
+      text-align: ${type === "center" ? "center" : "left"};
     `}
     {...props}
   />
