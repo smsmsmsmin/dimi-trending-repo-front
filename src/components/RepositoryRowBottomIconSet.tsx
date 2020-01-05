@@ -5,12 +5,18 @@ import ColorSet from "../styles/github-language-colors";
 
 interface IProps {
   type: "star" | "forked" | "user" | keyof typeof ColorSet;
-  children: React.ReactNode;
 }
 
-const RepositoryRowBottomIconSet = (props: IProps) => {
+const RepositoryRowBottomIconSet = ({
+  type,
+  ...props
+}: IProps &
+  React.DetailedHTMLProps<
+    React.HTMLAttributes<HTMLSpanElement>,
+    HTMLSpanElement
+  >) => {
   const icon = () => {
-    switch (props.type) {
+    switch (type) {
       case "star":
         return <GoStar css={styles.icon} size={17} />;
       case "forked":
@@ -24,6 +30,11 @@ const RepositoryRowBottomIconSet = (props: IProps) => {
                 content: "•";
                 margin: 0 20px;
               }
+              @media (max-width: 767px) {
+                & :after {
+                  display: none;
+                }
+              }
             `}
           />
         );
@@ -33,7 +44,7 @@ const RepositoryRowBottomIconSet = (props: IProps) => {
             css={[
               styles.circle,
               css`
-                background-color: ${ColorSet[props.type]};
+                background-color: ${ColorSet[type]};
               `
             ]}
           />
@@ -44,7 +55,7 @@ const RepositoryRowBottomIconSet = (props: IProps) => {
   return (
     <div css={styles.wrap}>
       {icon()}
-      <span>{props.children}</span>
+      <span {...props} />
     </div>
   );
 };
@@ -53,7 +64,7 @@ const styles = {
   wrap: css`
     display: flex;
     align-items: center;
-    & :not(:nth-child(3)) {
+    & :not(:nth-of-type(3)) {
       margin-right: 20px;
     }
   `,

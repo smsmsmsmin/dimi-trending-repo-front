@@ -48,7 +48,7 @@ const RepositoryRow = (props: IProps) => {
           <RepositoryRowBottomIconSet type="forked">
             {forked}
           </RepositoryRowBottomIconSet>
-          <RepositoryRowBottomIconSet type="user">
+          <RepositoryRowBottomIconSet type="user" css={styles.userInfo}>
             {user.th}기 {majorName[user.major]} {user.name}
           </RepositoryRowBottomIconSet>
         </div>
@@ -117,6 +117,11 @@ const styles = {
     max-width: 100px;
     max-height: 100px;
     border-radius: 50%;
+  `,
+  userInfo: css`
+    @media (max-width: 767px) {
+      display: none;
+    }
   `
 };
 
