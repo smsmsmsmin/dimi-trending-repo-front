@@ -15,6 +15,7 @@ const Repository: React.FC = () => {
           description="디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트"
           star={300}
           forked={99}
+          user={{ name: "이승민", th: "19", major: "WP" }}
         />
         <RepositoryRow
           username="yooonspace"
@@ -23,6 +24,7 @@ const Repository: React.FC = () => {
           description="디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트"
           star={300}
           forked={99}
+          user={{ name: "이승민", th: "19", major: "WP" }}
         />
         <RepositoryRow
           username="yooonspace"
@@ -31,6 +33,7 @@ const Repository: React.FC = () => {
           description="디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트"
           star={300}
           forked={99}
+          user={{ name: "이승민", th: "19", major: "WP" }}
         />
         <RepositoryRow
           username="yooonspace"
@@ -39,6 +42,7 @@ const Repository: React.FC = () => {
           description="디미고의 인기있는 프로젝트 레포지토리를 모아서 보여주는 프로젝트"
           star={300}
           forked={99}
+          user={{ name: "이승민", th: "19", major: "WP" }}
         />
       </Box>
     </>

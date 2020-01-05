@@ -2,6 +2,7 @@ import React from "react";
 import css from "@emotion/css";
 import RepositoryRowBottomIconSet from "./RepositoryRowBottomIconSet";
 import ColorSet from "../styles/github-language-colors";
+import { majorName } from "../utils/major";
 
 interface IProps {
   username: string;
@@ -10,10 +11,23 @@ interface IProps {
   description: string;
   star: number | string;
   forked: number | string;
+  user: {
+    th: string;
+    major: keyof typeof majorName;
+    name: string;
+  };
 }
 
 const RepositoryRow = (props: IProps) => {
-  const { username, repository, language, description, star, forked } = props;
+  const {
+    username,
+    repository,
+    language,
+    description,
+    star,
+    forked,
+    user
+  } = props;
   return (
     <div css={styles.container}>
       <div css={styles.leftWrap}>
@@ -33,6 +47,9 @@ const RepositoryRow = (props: IProps) => {
           </RepositoryRowBottomIconSet>
           <RepositoryRowBottomIconSet type="forked">
             {forked}
+          </RepositoryRowBottomIconSet>
+          <RepositoryRowBottomIconSet type="user">
+            {user.th}기 {majorName[user.major]} {user.name}
           </RepositoryRowBottomIconSet>
         </div>
       </div>

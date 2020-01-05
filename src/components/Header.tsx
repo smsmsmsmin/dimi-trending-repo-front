@@ -32,7 +32,7 @@ const Header: React.FC = () => {
             </span>
           </div>
         </div>
-        <div>
+        <div css={styles.rightWrap}>
           <NavLink
             exact
             to="/repository"
@@ -66,7 +66,6 @@ const styles = {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 30px;
     @media (max-width: 767px) {
       flex-direction: column;
     }
@@ -75,8 +74,16 @@ const styles = {
     display: flex;
     flex-direction: row;
     align-items: center;
+    padding: 30px 0;
     @media (max-width: 767px) {
+      padding: 20px 0;
       flex-direction: column;
+    }
+  `,
+  rightWrap: css`
+    padding: 30px 0;
+    @media (max-width: 767px) {
+      padding: 0 0 20px 0;
     }
   `,
   logo: css`

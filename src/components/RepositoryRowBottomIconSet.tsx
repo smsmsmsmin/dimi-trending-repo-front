@@ -1,10 +1,10 @@
 import React from "react";
 import css from "@emotion/css";
-import { GoRepoForked, GoStar } from "react-icons/all";
+import { GoRepoForked, GoStar, GoPerson } from "react-icons/all";
 import ColorSet from "../styles/github-language-colors";
 
 interface IProps {
-  type: "star" | "forked" | keyof typeof ColorSet;
+  type: "star" | "forked" | "user" | keyof typeof ColorSet;
   children: React.ReactNode;
 }
 
@@ -15,6 +15,18 @@ const RepositoryRowBottomIconSet = (props: IProps) => {
         return <GoStar css={styles.icon} size={17} />;
       case "forked":
         return <GoRepoForked css={styles.icon} size={17} />;
+      case "user":
+        // return <GoPerson css={styles.icon} size={17} />;
+        return (
+          <span
+            css={css`
+              & :after {
+                content: "•";
+                margin: 0 20px;
+              }
+            `}
+          />
+        );
       default:
         return (
           <span
@@ -41,7 +53,9 @@ const styles = {
   wrap: css`
     display: flex;
     align-items: center;
-    margin-right: 20px;
+    & :not(:nth-child(3)) {
+      margin-right: 20px;
+    }
   `,
   circle: css`
     display: block;

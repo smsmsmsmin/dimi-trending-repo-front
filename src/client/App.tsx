@@ -13,8 +13,8 @@ const App: React.FC = () => {
         <Switch>
           <Route exact path="/" component={Root} />
           <Route path="/register" component={Register} />
-          <Route exact path="/repository" component={Repository} />
-          <Route exact path="/developer" component={Developer} />
+          <Route path="/repository" component={Repository} />
+          <Route path="/developer" component={Developer} />
         </Switch>
       </PageWrap>
     </BrowserRouter>
