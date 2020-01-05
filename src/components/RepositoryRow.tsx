@@ -40,6 +40,7 @@ const RepositoryRow = (props: IProps) => {
         <img
           src={`https://github.com/${username}.png`}
           css={styles.profileImage}
+          alt={`${username}'s profile`}
         />
       </a>
     </div>

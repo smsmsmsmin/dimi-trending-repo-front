@@ -21,7 +21,11 @@ const ProfileBox = (props: IProps) => {
     <div css={styles.container}>
       <Box css={styles.box}>
         <div css={styles.imageWrap}>
-          <img src="https://github.com/yooonspace.png" css={styles.image} />
+          <img
+            src="https://github.com/yooonspace.png"
+            css={styles.image}
+            alt={`${username}'s profile`}
+          />
           <div css={[styles.circle, styles.th]}>{th}</div>
           <div
             css={[

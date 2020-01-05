@@ -5,7 +5,7 @@ interface IAuth {
   clearAppStorage(): void;
   get(key: string): JSON;
   setToken(token: string): void;
-  setUserInfo(userInfo: JSON): void;
+  setUserInfo(userInfo: string | object): void;
   getToken(): any;
   getUserInfo(): any;
 }

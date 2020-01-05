@@ -17,7 +17,7 @@ const Header: React.FC = () => {
             `}
           >
             <span css={styles.headText}>
-              <img src={star} css={styles.star} />
+              <img src={star} css={styles.star} alt="star" />
               DIMI TRENDING REPO
             </span>
             <span
