@@ -13,8 +13,8 @@ const Box = (
       height: fit-content;
       flex-direction: column;
       background: white;
-      padding: 30px;
-      border-radius: 15px;
+      padding: 1.875em;
+      border-radius: 0.938em;
       box-shadow: -5px 10px 60px -13px rgba(0, 0, 0, 0.2);
     `}
     {...props}

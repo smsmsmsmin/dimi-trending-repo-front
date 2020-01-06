@@ -11,7 +11,7 @@ const PageDescription = ({
 >) => (
   <span
     css={css`
-      margin-bottom: ${margin || 25}px;
+      margin-bottom: ${margin || 1.563}em;
       text-align: ${type === "center" ? "center" : "left"};
     `}
     {...props}

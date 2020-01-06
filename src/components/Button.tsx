@@ -12,9 +12,9 @@ const Button = (
       width: 100%;
       border: 0;
       color: white;
-      padding: 7px 14px;
+      padding: 0.438em 0.875em;
       border-radius: 3px;
-      font-size: 17px;
+      font-size: 1.063rem;
       background-color: #e81572;
     `}
     {...props}

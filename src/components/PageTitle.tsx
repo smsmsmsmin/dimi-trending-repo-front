@@ -11,9 +11,9 @@ const PageTitle = ({
   <span
     css={css`
       display: block;
-      font-size: 25px;
+      font-size: 1.563rem;
       font-weight: 700;
-      margin-bottom: 25px;
+      margin-bottom: 1.563rem;
       text-align: ${type === "center" ? "center" : "left"};
     `}
     {...props}

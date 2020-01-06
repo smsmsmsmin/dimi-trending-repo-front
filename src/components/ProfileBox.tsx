@@ -41,9 +41,9 @@ const ProfileBox = (props: IProps) => {
 
 const styles = {
   container: css`
-    max-width: calc(25% - 20px);
+    max-width: calc(25% - 1.25em);
     height: fit-content;
-    padding: 10px;
+    padding: 0.625em;
     text-decoration: none;
     color: initial;
     @media (max-width: 767px) {
@@ -52,8 +52,8 @@ const styles = {
   `,
   box: css`
     display: flex;
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 1.25em;
+    margin-bottom: 1.25em;
     @media (max-width: 767px) {
       flex-direction: row;
       align-items: center;
@@ -64,11 +64,11 @@ const styles = {
     display: block;
     width: 90%;
     height: 90%;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 1.25em auto;
     @media (max-width: 767px) {
       width: 50%;
       height: 50%;
-      margin: 0 15px 0 0;
+      margin: 0 0.938em 0 0;
     }
   `,
   image: css`
@@ -85,24 +85,20 @@ const styles = {
   `,
   name: css`
     display: block;
-    font-size: 25px;
+    font-size: 1.563rem;
     font-weight: 700;
-    margin-bottom: 10px;
-    @media (max-width: 767px) {
-      font-size: 20px;
-    }
+    margin-bottom: 0.625em;
   `,
   username: css`
-    font-size: 20px;
+    font-size: 1.25em;
     color: #666666;
     @media (max-width: 767px) {
-      font-size: 17px;
       margin-bottom: 0;
     }
   `,
   chipWrap: css`
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 0.625em;
     @media (max-width: 767px) {
       // margin-bottom: 0;
     }
@@ -110,10 +106,10 @@ const styles = {
   chip: css`
     display: flex;
     align-items: center;
-    height: 30px;
-    border-radius: 20px;
-    font-size: 14px;
-    padding: 0 10px;
+    height: 1.875em;
+    border-radius: 1.25em;
+    font-size: 1rem;
+    padding: 0 0.625em;
     background: #e4e4e4;
     & :first-of-type {
       margin-right: 5px;

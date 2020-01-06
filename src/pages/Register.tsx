@@ -50,7 +50,7 @@ const Register: React.FC<RouteComponentProps> = props => {
       `}
     >
       <PageTitle type="center">디미고인이신가요?</PageTitle>
-      <PageDescription type="center" margin="40">
+      <PageDescription type="center" margin="2.5">
         정보 수집을 위해 아래의 폼을 제출해주세요!
       </PageDescription>
       <form onSubmit={handleSubmit}>
@@ -93,7 +93,7 @@ const Register: React.FC<RouteComponentProps> = props => {
           css={css`
             display: flex;
             justify-content: flex-end;
-            padding-top: 40px;
+            padding-top: 2.5em;
           `}
         >
           <Button type="submit">제출</Button>

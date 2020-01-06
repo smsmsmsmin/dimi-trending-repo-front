@@ -69,7 +69,7 @@ const styles = {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #e1e4e8;
-    padding: 30px 0;
+    padding: 1.875em 0;
     & :first-of-type {
       padding-top: 0;
     }
@@ -87,9 +87,9 @@ const styles = {
   username: css`
     display: block;
     color: #0366d6;
-    font-size: 20px;
+    font-size: 1.25rem;
     cursor: pointer;
-    margin-bottom: 20px;
+    margin-bottom: 1.250em;
     text-decoration: none;
     :hover {
       text-decoration: underline;
@@ -100,12 +100,12 @@ const styles = {
   `,
   description: css`
     display: block;
-    margin-bottom: 20px;
+    margin-bottom: 1.250em;
     line-height: 1.4;
   `,
   bottomWrap: css`
     display: flex;
-    font-size: 14px;
+    font-size: 0.875rem;
   `,
   profileImageA: css`
     margin: auto 0;

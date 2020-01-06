@@ -12,8 +12,8 @@ const Developer: React.FC = () => {
           display: flex;
           flex-wrap: wrap;
           height: fit-content;
-          margin-left: -10px;
-          margin-right: -10px;
+          margin-left: -0.625em;
+          margin-right: -0.625em;
         `}
       >
         <ProfileBox name="이승민" username="yooonspace" th="19" major="WP" />

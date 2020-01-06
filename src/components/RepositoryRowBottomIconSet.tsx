@@ -1,6 +1,6 @@
 import React from "react";
 import css from "@emotion/css";
-import { GoRepoForked, GoStar, GoPerson } from "react-icons/all";
+import { GoRepoForked, GoStar } from "react-icons/all";
 import ColorSet from "../styles/github-language-colors";
 
 interface IProps {
@@ -28,7 +28,7 @@ const RepositoryRowBottomIconSet = ({
             css={css`
               & :after {
                 content: "•";
-                margin: 0 20px;
+                margin: 0 1.250em;
               }
               @media (max-width: 767px) {
                 & :after {
@@ -65,13 +65,13 @@ const styles = {
     display: flex;
     align-items: center;
     & :not(:nth-of-type(3)) {
-      margin-right: 20px;
+      margin-right: 1.250em;
     }
   `,
   circle: css`
     display: block;
-    width: 15px;
-    height: 15px;
+    width: 0.938em;
+    height: 0.938em;
     border-radius: 50%;
     margin-right: 5px;
   `,

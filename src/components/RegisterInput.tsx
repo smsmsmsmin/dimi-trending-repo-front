@@ -29,14 +29,14 @@ const RegisterInput = ({
 const styles = {
   label: css`
     // display: block;
-    font-size: 14px;
-    margin-bottom: 10px;
+    font-size: 0.875rem;
+    margin-bottom: 0.625em;
   `,
   input: css`
     width: 100%;
     background: transparent;
     // border: 0;
-    font-size: 25px;
+    font-size: 1.563rem;
     border-color: #b5b9bd;
     border-width: 0 0 1px 0;
     transition: border-color linear 0.2s;
@@ -48,10 +48,10 @@ const styles = {
   inputWrap: css`
     display: flex;
     flex-direction: column;
-    margin-bottom: 20px;
+    margin-bottom: 1.25em;
   `,
   inputLabel: css`
-    font-size: 25px;
+    font-size: 1.563em;
   `,
   inputLabelWrap: css`
     display: flex;

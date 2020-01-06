@@ -20,7 +20,7 @@ const PageWrap = (
       css={css`
         width: 100%;
         max-width: 1000px;
-        padding: 25px 15px;
+        padding: 1.563rem 0.938em;
       `}
       {...props}
     >

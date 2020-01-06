@@ -74,47 +74,50 @@ const styles = {
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding: 30px 0;
+    padding: 1.875em 0;
     @media (max-width: 767px) {
-      padding: 20px 0;
+      padding: 1.25em 0;
       flex-direction: column;
     }
   `,
   rightWrap: css`
-    padding: 30px 0;
+    padding: 1.875em 0;
     @media (max-width: 767px) {
-      padding: 0 0 20px 0;
+      padding: 0 0 1.25em 0;
     }
   `,
   logo: css`
     width: 65px;
-    margin-right: 15px;
+    margin-right: 0.938em;
     @media (max-width: 767px) {
       margin-right: 0;
-      margin-bottom: 10px;
+      margin-bottom: 0.625em;
     }
   `,
   headText: css`
     width: fit-content;
     position: relative;
-    font-size: 25px;
+    font-size: 1.563rem;
     font-weight: 700;
-    margin-bottom: 10px;
+    margin-bottom: 0.625em;
+    @media (max-width: 767px) {
+      margin-bottom: 0;
+    }
   `,
   star: css`
     display: none;
     position: absolute;
-    width: 25px;
-    top: -10px;
-    right: -10px;
+    width: 1.563rem;
+    top: -0.625em;
+    right: -0.625em;
     transform: rotate(20deg);
   `,
   menu: css`
     border: 0;
     text-decoration: none;
-    font-size: 20px;
+    font-size: 1.25em;
     color: #586069;
-    margin-left: 15px;
+    margin-left: 0.938em;
     & :first-of-type {
       margin-left: 0;
     }
