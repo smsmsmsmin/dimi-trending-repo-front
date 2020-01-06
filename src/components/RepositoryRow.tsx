@@ -3,6 +3,7 @@ import css from "@emotion/css";
 import RepositoryRowBottomIconSet from "./RepositoryRowBottomIconSet";
 import ColorSet from "../styles/github-language-colors";
 import { majorName } from "../utils/major";
+import RepositoryRowBottomIconSetHover from "./RepositoryRowBottomIconSetHover";
 
 interface IProps {
   username: string;
@@ -42,8 +43,18 @@ const RepositoryRow = (props: IProps) => {
           <RepositoryRowBottomIconSet type={language}>
             {language}
           </RepositoryRowBottomIconSet>
-          <RepositoryRowBottomIconSet type="star">
+          <RepositoryRowBottomIconSet type="star" css={styles.starSet}>
             {star}
+            <RepositoryRowBottomIconSetHover
+              name="Stargazer"
+              users={[
+                "yooonspace",
+                "yooonspace",
+                "yooonspace",
+                "yooonspace",
+                "yooonspace"
+              ]}
+            />
           </RepositoryRowBottomIconSet>
           <RepositoryRowBottomIconSet type="forked">
             {forked}
@@ -89,7 +100,7 @@ const styles = {
     color: #0366d6;
     font-size: 1.25rem;
     cursor: pointer;
-    margin-bottom: 1.250em;
+    margin-bottom: 1.25em;
     text-decoration: none;
     :hover {
       text-decoration: underline;
@@ -100,7 +111,7 @@ const styles = {
   `,
   description: css`
     display: block;
-    margin-bottom: 1.250em;
+    margin-bottom: 1.25em;
     line-height: 1.4;
   `,
   bottomWrap: css`
@@ -121,6 +132,12 @@ const styles = {
   userInfo: css`
     @media (max-width: 767px) {
       display: none;
+    }
+  `,
+  starSet: css`
+    cursor: pointer;
+    & :hover > div {
+      display: flex;
     }
   `
 };

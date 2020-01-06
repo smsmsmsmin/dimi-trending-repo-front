@@ -22,22 +22,7 @@ const RepositoryRowBottomIconSet = ({
       case "forked":
         return <GoRepoForked css={styles.icon} size={17} />;
       case "user":
-        // return <GoPerson css={styles.icon} size={17} />;
-        return (
-          <span
-            css={css`
-              & :after {
-                content: "•";
-                margin: 0 1.250em;
-              }
-              @media (max-width: 767px) {
-                & :after {
-                  display: none;
-                }
-              }
-            `}
-          />
-        );
+        return <span css={styles.user} />;
       default:
         return (
           <span
@@ -63,9 +48,14 @@ const RepositoryRowBottomIconSet = ({
 const styles = {
   wrap: css`
     display: flex;
+    position: relative;
     align-items: center;
+    cursor: default;
     & :not(:nth-of-type(3)) {
-      margin-right: 1.250em;
+      margin-right: 1.25em;
+    }
+    & :hover > div {
+      display: flex;
     }
   `,
   circle: css`
@@ -77,6 +67,17 @@ const styles = {
   `,
   icon: css`
     margin-right: 5px;
+  `,
+  user: css`
+    & :after {
+      content: "•";
+      margin: 0 1.25em;
+    }
+    @media (max-width: 767px) {
+      & :after {
+        display: none;
+      }
+    }
   `
 };
 
