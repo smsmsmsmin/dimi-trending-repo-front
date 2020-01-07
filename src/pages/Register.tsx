@@ -8,6 +8,7 @@ import RegisterSelect from "../components/RegisterSelect";
 import PageDescription from "../components/PageDescription";
 import auth from "../utils/auth";
 import { RouteComponentProps } from "react-router";
+import api from "../utils/api";
 
 interface IInfo {
   name: string;
@@ -34,9 +35,24 @@ const Register: React.FC<RouteComponentProps> = props => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (info.name && info.username) {
-      auth.setUserInfo(info);
-      alert("등록이 완료되었습니다.");
-      props.history.push("/repository");
+      api
+        .post("/useradd", null, {
+          params: {
+            name: info.name,
+            department: info.major,
+            year: info.th,
+            githubid: info.username
+          }
+        })
+        .then(r => {
+          console.log(r);
+          auth.setUserInfo(info);
+          alert("등록이 완료되었습니다.");
+          props.history.push("/repository");
+        })
+        .catch(e => {
+          console.log(e);
+        });
     } else {
       alert("입력한 정보를 다시 한번 확인해주세요.");
     }
