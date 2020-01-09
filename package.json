@@ -2,6 +2,7 @@
   "name": "dimi-trending-repo-front",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://docker.hanukoon.com:5000/",
   "dependencies": {
     "@emotion/core": "^10.0.27",
     "@emotion/css": "^10.0.27",

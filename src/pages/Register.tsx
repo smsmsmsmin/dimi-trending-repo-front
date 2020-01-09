@@ -9,6 +9,7 @@ import PageDescription from "../components/PageDescription";
 import auth from "../utils/auth";
 import { RouteComponentProps } from "react-router";
 import api from "../utils/api";
+import axios from "axios";
 
 interface IInfo {
   name: string;
@@ -36,12 +37,15 @@ const Register: React.FC<RouteComponentProps> = props => {
     e.preventDefault();
     if (info.name && info.username) {
       api
-        .post("/useradd", null, {
+        .post("/useradd", {
           params: {
             name: info.name,
             department: info.major,
             year: info.th,
             githubid: info.username
+          },
+          headers: {
+            "Access-Control-Allow-Origin": "*"
           }
         })
         .then(r => {
@@ -63,6 +67,9 @@ const Register: React.FC<RouteComponentProps> = props => {
       css={css`
         width: 50%;
         margin: 0 auto;
+        @media (max-width: 767px) {
+          width: 100%;
+        }
       `}
     >
       <PageTitle type="center">디미고인이신가요?</PageTitle>
