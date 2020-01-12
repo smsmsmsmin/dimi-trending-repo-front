@@ -59,6 +59,7 @@ const styles = {
         font-size: inherit;
         outline-width: 0;
         border-radius: 30px;
+        user-select: none;
   `,
     selections: (isSelecting: boolean) => css`
         box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -68,6 +69,7 @@ const styles = {
         overflow: hidden;
         position: relative;
         transition: 400ms cubic-bezier(0,.87,.38,.98);
+        user-select: none;
         ${!isSelecting && `
             margin-top: 0;
         `}
