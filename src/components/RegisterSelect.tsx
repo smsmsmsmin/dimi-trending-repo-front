@@ -8,33 +8,26 @@ const RegisterSelect = ({
   React.SelectHTMLAttributes<HTMLSelectElement>,
   HTMLSelectElement
 >) => (
-  <div css={styles.inputWrap}>
-    <span css={styles.label}>{label}</span>
-    <select css={[styles.input, styles.select]} {...props}>
-      {props.children}
-    </select>
-  </div>
-);
+    <div css={styles.inputWrap}>
+      <span css={styles.label}>{label}</span>
+      <div css={styles.selectWrap}>
+        <select css={[styles.input, styles.select]} {...props}>
+          {props.children}
+        </select>
+      </div>
+    </div>
+  );
 
 const styles = {
   label: css`
-    // display: block;
     font-size: 0.875rem;
     margin-bottom: 0.625rem;
   `,
   input: css`
-    width: 100%;
-    background: transparent;
-    // border: 0;
-    font-size: 1.563rem;
-    border-color: #b5b9bd;
-    border-width: 0 0 1px 0;
-    transition: border-color linear 0.2s;
-    & :focus {
-      border-color: #e81572;
-      outline: 0;
-    }
-  `,
+  width: 100%;
+  background-color: transparent;
+  outline: none;
+`,
   inputWrap: css`
     display: flex;
     flex-direction: column;
@@ -42,6 +35,16 @@ const styles = {
   `,
   select: css`
     border: 0;
+  `,
+  selectWrap: css`
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75em 1.5em;
+    border: 0;
+    background-color: #f3f3f3;
+    font-size: inherit;
+    outline-width: 0;
+    border-radius: 30px;
   `
 };
 

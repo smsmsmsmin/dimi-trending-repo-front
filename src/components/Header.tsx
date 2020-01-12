@@ -81,7 +81,7 @@ const styles = {
     }
   `,
   rightWrap: css`
-    padding: 1.875em 0;
+    padding: 1.875em 20px;
     @media (max-width: 767px) {
       padding: 0 0 1.25em 0;
     }

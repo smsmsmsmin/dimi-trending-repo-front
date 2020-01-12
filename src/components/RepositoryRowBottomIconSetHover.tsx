@@ -11,7 +11,7 @@ const RepositoryRowBottomIconSetHover = (props: IProps) => (
     <span>{props.name}</span>
     <div css={styles.profileWrap}>
       {props.users.map(username => (
-        <a css={styles.profileImgWrap} href={`https://github.com/${username}`}>
+        <a css={styles.profileImgWrap} href={`https://github.com/${username}`} key={username}>
           <img
             css={styles.profileImg}
             src={`https://github.com/${username}.png`}

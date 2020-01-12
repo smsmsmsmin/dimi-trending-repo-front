@@ -49,10 +49,10 @@ const RepositoryRow = (props: IProps) => {
               name="Stargazer"
               users={[
                 "yooonspace",
-                "yooonspace",
-                "yooonspace",
-                "yooonspace",
-                "yooonspace"
+                "cokia",
+                "header1213",
+                "reeactdev",
+                "Gijuno-Dev"
               ]}
             />
           </RepositoryRowBottomIconSet>
