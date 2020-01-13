@@ -1,25 +1,27 @@
 import React from "react";
 import css from "@emotion/css";
 
-const Button = (
-  props: React.DetailedHTMLProps<
-    React.ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  >
-) => (
+const Button = ({
+  disabled,
+  ...props
+}: { disabled?: boolean } & React.DetailedHTMLProps<
+  React.ButtonHTMLAttributes<HTMLButtonElement>,
+  HTMLButtonElement
+>) => (
   <button
+    disabled={disabled || false}
     css={css`
       width: 100%;
       border: 0;
-      color: white;
-      padding: 0.438em 0.875em;
+      cursor: pointer;
+      color: ${disabled ? "#6f6f6f" : "white"};
+      padding: 0.75em 1.5em;
       border-radius: 30px;
-      font-size: 1.063rem;
-      background-color: #e81572;
+      font: inherit;
+      font-size: 1.2rem;
+      font-weight: 700;
+      background-color: ${disabled ? "#f0f0f0" : "#e81572"};
       transition: 200ms box-shadow;
-      &:hover {
-        box-shadow: 0px 0px 10px #E882AE;
-      }
     `}
     {...props}
   />

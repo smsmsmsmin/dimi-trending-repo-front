@@ -32,20 +32,22 @@ const styles = {
     margin-bottom: 0.625em;
   `,
   input: (leftBorder: boolean) => css`
-  width: 100%;
-  box-sizing: border-box;
-  padding: 0.75em 1.5em;
-  border: 0;
-  appearance: none;
-  background-color: #f3f3f3;
-  font-size: inherit;
-  outline-width: 0;
-  ${leftBorder ? `
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.75em 1.5em;
+    border: 0;
+    appearance: none;
+    background-color: #f3f3f3;
+    font-size: inherit;
+    outline-width: 0;
+    ${leftBorder
+      ? `
     border-radius: 30px;
-  ` : `border-top-right-radius: 30px;
+  `
+      : `border-top-right-radius: 30px;
     border-bottom-right-radius: 30px;
     padding-left: 3px`}
-`,
+  `,
   inputWrap: css`
     display: flex;
     flex-direction: column;

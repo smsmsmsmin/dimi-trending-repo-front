@@ -1,15 +1,14 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import PageTitle from "../components/PageTitle";
 import Box from "../components/Box";
 import css from "@emotion/css";
 import Button from "../components/Button";
 import RegisterInput from "../components/RegisterInput";
-import RegisterSelect from "../components/RegisterSelect";
-import RegisterAnimatedSelect from "../components/RegisterAnimatedSelect"
 import PageDescription from "../components/PageDescription";
 import auth from "../utils/auth";
 import { RouteComponentProps } from "react-router";
 import api from "../utils/api";
+import SegmentedSelect from "../components/SegmentedSelect";
 
 interface IInfo {
   name: string;
@@ -19,26 +18,34 @@ interface IInfo {
 }
 
 const Register: React.FC<RouteComponentProps> = props => {
+  const [validation, setValidation] = useState<boolean>(false);
   const [info, setInfo] = useState<IInfo>({
     name: "",
     username: "",
-    th: "19",
-    major: "DC"
+    th: "",
+    major: ""
   });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
-  ) => {
-    e.persist();
-    setInfo(p => ({ ...p, [e.target.name]: e.target.value }));
-  };
-  const setAnimatedData = (name: string, value: string) => {
-    console.log(name, value)
+  const handleChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+      e.persist();
+      setInfo(p => ({ ...p, [e.target.name]: e.target.value }));
+    },
+    []
+  );
+
+  const setAnimatedData = useCallback((name: string, value: string) => {
     setInfo(p => ({
       ...p,
       [name]: value
-    }))
-  }
+    }));
+  }, []);
+
+  useEffect(() => {
+    setValidation(!(info.name && info.username));
+    console.log(info);
+  }, [info]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (info.name && info.username) {
@@ -49,9 +56,6 @@ const Register: React.FC<RouteComponentProps> = props => {
             department: info.major,
             year: info.th,
             githubid: info.username
-          },
-          headers: {
-            "Access-Control-Allow-Origin": "*"
           }
         })
         .then(r => {
@@ -96,24 +100,29 @@ const Register: React.FC<RouteComponentProps> = props => {
           value={info.username}
           onChange={handleChange}
         />
-        <RegisterAnimatedSelect
-          label="학번"
+        <SegmentedSelect
+          label="기수"
           name="th"
           value={info.th}
           onChange={setAnimatedData}
-          options={[16, 17, 18, 19].map(e => `${e}기`)}
+          options={[
+            { value: "17", customLabel: "17기" },
+            { value: "18", customLabel: "18기" },
+            { value: "19", customLabel: "19기" }
+          ]}
         />
-        <RegisterSelect
+        <SegmentedSelect
           label="학과"
           name="major"
           value={info.major}
-          onChange={handleChange}
-        >
-          <option value="DC">디지털컨텐츠과</option>
-          <option value="EB">E-비즈니스과</option>
-          <option value="WP">웹프로그래밍과</option>
-          <option value="HD">해킹방어과</option>
-        </RegisterSelect>
+          onChange={setAnimatedData}
+          options={[
+            { value: "DC" },
+            { value: "EB" },
+            { value: "WP" },
+            { value: "HD" }
+          ]}
+        />
         <div
           css={css`
             display: flex;
@@ -121,7 +130,9 @@ const Register: React.FC<RouteComponentProps> = props => {
             padding-top: 2.5em;
           `}
         >
-          <Button type="submit">제출</Button>
+          <Button type="submit" disabled={validation}>
+            제출
+          </Button>
         </div>
       </form>
     </Box>
