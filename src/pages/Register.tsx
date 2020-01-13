@@ -5,11 +5,11 @@ import css from "@emotion/css";
 import Button from "../components/Button";
 import RegisterInput from "../components/RegisterInput";
 import RegisterSelect from "../components/RegisterSelect";
+import RegisterAnimatedSelect from "../components/RegisterAnimatedSelect"
 import PageDescription from "../components/PageDescription";
 import auth from "../utils/auth";
 import { RouteComponentProps } from "react-router";
 import api from "../utils/api";
-import axios from "axios";
 
 interface IInfo {
   name: string;
@@ -32,7 +32,13 @@ const Register: React.FC<RouteComponentProps> = props => {
     e.persist();
     setInfo(p => ({ ...p, [e.target.name]: e.target.value }));
   };
-
+  const setAnimatedData = (name: string, value: string) => {
+    console.log(name, value)
+    setInfo(p => ({
+      ...p,
+      [name]: value
+    }))
+  }
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (info.name && info.username) {
@@ -90,17 +96,13 @@ const Register: React.FC<RouteComponentProps> = props => {
           value={info.username}
           onChange={handleChange}
         />
-        <RegisterSelect
+        <RegisterAnimatedSelect
           label="학번"
           name="th"
           value={info.th}
-          onChange={handleChange}
-        >
-          <option value="19">19</option>
-          <option value="18">18</option>
-          <option value="17">17</option>
-          <option value="16">16</option>
-        </RegisterSelect>
+          onChange={setAnimatedData}
+          options={[16, 17, 18, 19].map(e => `${e}기`)}
+        />
         <RegisterSelect
           label="학과"
           name="major"

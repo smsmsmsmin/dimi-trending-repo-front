@@ -19,8 +19,8 @@ const RegisterInput = ({
     <div css={styles.inputWrap}>
       <span css={styles.label}>{label}</span>
       <div css={styles.inputLabelWrap}>
-        <span css={styles.inputLabel}>{inputLabel}</span>
-        <input css={styles.input} type="text" {...props} />
+        {inputLabel && <span css={styles.inputLabel}>{inputLabel}</span>}
+        <input css={styles.input(!inputLabel)} type="text" {...props} />
       </div>
     </div>
   );
@@ -28,35 +28,44 @@ const RegisterInput = ({
 
 const styles = {
   label: css`
-    // display: block;
     font-size: 0.875rem;
     margin-bottom: 0.625em;
   `,
-  input: css`
-    width: 100%;
-    background: transparent;
-    // border: 0;
-    font-size: 1.563rem;
-    border-color: #b5b9bd;
-    border-width: 0 0 1px 0;
-    transition: border-color linear 0.2s;
-    & :focus {
-      border-color: #e81572;
-      outline: 0;
-    }
-  `,
+  input: (leftBorder: boolean) => css`
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.75em 1.5em;
+  border: 0;
+  appearance: none;
+  background-color: #f3f3f3;
+  font-size: inherit;
+  outline-width: 0;
+  ${leftBorder ? `
+    border-radius: 30px;
+  ` : `border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    padding-left: 3px`}
+`,
   inputWrap: css`
     display: flex;
     flex-direction: column;
     margin-bottom: 1.25em;
   `,
   inputLabel: css`
-    font-size: 1.563em;
+    font-size: 1.25em;
+    background-color: #f3f3f3;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    padding: 6px;
+    padding-left: 15px;
+    line-height: 24px;
   `,
   inputLabelWrap: css`
     display: flex;
     flex-direction: row;
     width: 100%;
+    padding: 6px;
+    padding-left: 0px;
   `
 };
 
