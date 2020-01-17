@@ -3,6 +3,7 @@ import css from "@emotion/css";
 import RepositoryRowBottomIconSet from "./RepositoryRowBottomIconSet";
 import ColorSet from "../styles/github-language-colors";
 import { majorName } from "../utils/major";
+import ClickPopDiv from "./ClickPop"
 import RepositoryRowBottomIconSetHover from "./RepositoryRowBottomIconSetHover";
 
 interface IProps {
@@ -19,18 +20,18 @@ interface IProps {
   };
 }
 
-const RepositoryRow = (props: IProps) => {
-  const {
-    username,
-    repository,
-    language,
-    description,
-    star,
-    forked,
-    user
-  } = props;
+const RepositoryRow = ({
+  username,
+  repository,
+  language,
+  description,
+  star,
+  forked,
+  user,
+  ...props
+}: IProps) => {
   return (
-    <div css={styles.container}>
+    <ClickPopDiv css={styles.container}>
       <div css={styles.leftWrap}>
         <a
           href={`https://github.com/${username}/${repository}`}
@@ -71,7 +72,7 @@ const RepositoryRow = (props: IProps) => {
           alt={`${username}'s profile`}
         />
       </a>
-    </div>
+    </ClickPopDiv>
   );
 };
 
@@ -81,12 +82,17 @@ const styles = {
     justify-content: space-between;
     border-bottom: 1px solid #e1e4e8;
     padding: 1.875em 0;
+    transition: 300ms;
+    transition-timing-function: cubic-bezier(.06,.67,.24,.91);
     & :first-of-type {
       padding-top: 0;
     }
     & :last-child {
       border: 0;
       padding-bottom: 0;
+    }
+    & :hover {
+      transform: translateY(-3px);
     }
   `,
   leftWrap: css`
