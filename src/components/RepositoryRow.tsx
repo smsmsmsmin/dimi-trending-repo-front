@@ -3,7 +3,7 @@ import css from "@emotion/css";
 import RepositoryRowBottomIconSet from "./RepositoryRowBottomIconSet";
 import ColorSet from "../styles/github-language-colors";
 import { majorName } from "../utils/major";
-import ClickPopDiv from "./ClickPop"
+import ClickPopDiv from "./ClickPop";
 import RepositoryRowBottomIconSetHover from "./RepositoryRowBottomIconSetHover";
 
 interface IProps {
@@ -42,7 +42,7 @@ const RepositoryRow = ({
         <span css={styles.description}>{description}</span>
         <div css={styles.bottomWrap}>
           <RepositoryRowBottomIconSet type={language}>
-            {language}
+            {language || "null"}
           </RepositoryRowBottomIconSet>
           <RepositoryRowBottomIconSet type="star" css={styles.starSet}>
             {star}
@@ -83,7 +83,7 @@ const styles = {
     border-bottom: 1px solid #e1e4e8;
     padding: 1.875em 0;
     transition: 300ms;
-    transition-timing-function: cubic-bezier(.06,.67,.24,.91);
+    transition-timing-function: cubic-bezier(0.06, 0.67, 0.24, 0.91);
     & :first-of-type {
       padding-top: 0;
     }

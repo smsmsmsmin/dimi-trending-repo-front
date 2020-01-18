@@ -29,7 +29,7 @@ const RepositoryRowBottomIconSet = ({
             css={[
               styles.circle,
               css`
-                background-color: ${ColorSet[type]};
+                background-color: ${ColorSet[type] || "black"};
               `
             ]}
           />

@@ -34,6 +34,7 @@ const styles = {
     padding: 10px;
     border-radius: 5px;
     cursor: default;
+    z-index: 999999;
     @media (max-width: 767px) {
       display: none !important;
     }
