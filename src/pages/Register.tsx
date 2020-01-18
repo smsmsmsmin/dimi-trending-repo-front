@@ -9,6 +9,7 @@ import auth from "../utils/auth";
 import { RouteComponentProps } from "react-router";
 import api from "../utils/api";
 import SegmentedSelect from "../components/SegmentedSelect";
+import ClickPopDiv from "../components/ClickPop"
 
 interface IInfo {
   name: string;
@@ -123,7 +124,7 @@ const Register: React.FC<RouteComponentProps> = props => {
             { value: "HD" }
           ]}
         />
-        <div
+        <ClickPopDiv
           css={css`
             display: flex;
             justify-content: flex-end;
@@ -133,7 +134,7 @@ const Register: React.FC<RouteComponentProps> = props => {
           <Button type="submit" disabled={validation}>
             제출
           </Button>
-        </div>
+        </ClickPopDiv>
       </form>
     </Box>
   );

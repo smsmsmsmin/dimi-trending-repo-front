@@ -68,6 +68,8 @@ const styles = {
     border: 0;
     flex: 1;
     justify-content: center;
+    transition: 200ms;
+    transition-timing-function: cubic-bezier(.06,.67,.24,.91);
     background-color: ${isSelected ? "#e81572" : "transparent"};
     color: ${isSelected ? "white" : "black"};
     padding: 0.75em 0;

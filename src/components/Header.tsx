@@ -37,14 +37,12 @@ const Header: React.FC = () => {
             exact
             to="/repository"
             css={styles.menu}
-            activeStyle={{ color: "#e81572" }}
           >
             레포지토리
           </NavLink>
           <NavLink
             to="/developer"
             css={styles.menu}
-            activeStyle={{ color: "#e81572" }}
           >
             개발자
           </NavLink>
@@ -82,6 +80,8 @@ const styles = {
   `,
   rightWrap: css`
     padding: 1.875em 20px;
+    flex-direction: row;
+    display: flex;
     @media (max-width: 767px) {
       padding: 0 0 1.25em 0;
     }
@@ -118,8 +118,17 @@ const styles = {
     font-size: 1.25em;
     color: #586069;
     margin-left: 0.938em;
+    transition: 300ms color;
+    display: block;
+    transition-timing-function: cubic-bezier(.06,.67,.24,.91);
     & :first-of-type {
       margin-left: 0;
+    }
+    &.active {
+      color: #E81572;
+    }
+    &:hover:not(.active) {
+      color: #D660BB;
     }
   `
 };
