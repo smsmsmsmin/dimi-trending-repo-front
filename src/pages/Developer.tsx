@@ -32,6 +32,7 @@ const Developer: React.FC = () => {
       <div
         css={css`
           display: flex;
+          flex-direction: column;
         `}
       >
         {developers.map(developer => (

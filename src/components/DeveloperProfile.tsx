@@ -65,6 +65,7 @@ const styles = {
     width: 100%;
     text-decoration: none;
     color: initial;
+    margin-bottom: 1em;
   `,
   leftWrap: css`
     width: 30%;
