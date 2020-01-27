@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader"
+import React, { useState } from "react";
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import css from "@emotion/css";
 import Box from "./Box";
 import { majorName } from "../utils/major";
@@ -13,66 +13,34 @@ interface IProps {
 
 const ProfileBox = (props: IProps) => {
   const { name, username, th, major } = props;
-  const [spinner, showSpinner] = useState(false)
-  const click = () => {
-    showSpinner(true)
-  }
-  return (
-    <a
-      href={`https://github.com/${username}`}
-      css={styles.container} onClick={click}>
-        <div>
-        <Box>
-        {spinner && <ClimbingBoxLoader css={styles.climber(spinner)} />}
-        <div css={[styles.imageWrap, disappearingAnimation.imageWrap(spinner)]}>
-          <img
-            src="https://github.com/yooonspace.png"
-            css={[styles.image, disappearingAnimation.image(spinner)]}
-            alt={`${username}'s profile`}
-          />
-        </div>
-        <div css={styles.infoWrap}>
-          <span css={[styles.name, disappearingAnimation.name(spinner)]}>{name}</span>
-          <div css={[styles.chipWrap, disappearingAnimation.chipWrap(spinner)]}>
-            <span css={[styles.chip, disappearingAnimation.chip(spinner)]}>{th}기</span>
-            {/*<span css={[styles.chip, css`background-color: ${majorColor[major]}; color: white;`]}>{majorName[major]}</span>*/}
-            <span css={[styles.chip, styles.majorChip,disappearingAnimation.chip(spinner)]}>
-              {majorName[major]}
-            </span>
-          </div>
-          <span css={styles.username}>@{username}</span>
-          {spinner && <span css={styles.movingto}>으로 이동하는중...</span>}
-        </div>
-      </Box>
 
-        </div>
-      </a>
+  return (
+    <a href={`https://github.com/${username}`} css={styles.container}>
+      <div>
+        <Box>
+          <div css={styles.imageWrap}>
+            <img
+              src="https://github.com/yooonspace.png"
+              css={styles.image}
+              alt={`${username}'s profile`}
+            />
+          </div>
+          <div css={styles.infoWrap}>
+            <span css={styles.name}>{name}</span>
+            <div css={styles.chipWrap}>
+              <span css={styles.chip}>{th}기</span>
+              <span css={[styles.chip, styles.majorChip]}>
+                {majorName[major]}
+              </span>
+            </div>
+            <span css={styles.username}>@{username}</span>
+          </div>
+        </Box>
+      </div>
+    </a>
   );
 };
-const disappearingAnimation = {
-  name: (spinner: boolean) => spinner && css`
-    font-size: 0rem;
-    margin-bottom: 0em;
-    opacity: 0;
-  `,
-  image: (spinner: boolean) => spinner && css`
-    opacity: 0;
-    height: 0px;
-  `,
-  chip: (spinner: boolean) => spinner && css`
-    height: 0px;
-    font-size: 0px;
-    padding: 0px 0px;
-  `,
-  imageWrap: (spinner: boolean) => spinner && css`
-    width: 0px;
-    height: 0px;
-    margin: 0px 0px;
-  `,
-  chipWrap: (spinner: boolean) => spinner && css`
-    margin: 0px 0px;
-  `
-}
+
 const styles = {
   container: css`
     max-width: calc(25% - 1.25em);
@@ -81,20 +49,17 @@ const styles = {
     text-decoration: none;
     color: initial;
     transition: 300ms;
-    transition-timing-function: cubic-bezier(.06,.67,.24,.91);
+    transition-timing-function: cubic-bezier(0.06, 0.67, 0.24, 0.91);
     @media (max-width: 767px) {
       max-width: 100%;
     }
-    & :hover {
-      transform: translateY(-5px);
-    }
   `,
-  box: () => css`
+  box: css`
     display: flex;
     padding: 1.25em;
     margin-bottom: 1.25em;
     transition: 200ms;
-    transition-timing-function: cubic-bezier(.06,.67,.24,.91);
+    transition-timing-function: cubic-bezier(0.06, 0.67, 0.24, 0.91);
     @media (max-width: 767px) {
       flex-direction: row;
       align-items: center;
@@ -133,7 +98,7 @@ const styles = {
     font-weight: 700;
     margin-bottom: 0.625em;
     transition: 500ms;
-    transition-timing-function: cubic-bezier(.06,.67,.24,.91);
+    transition-timing-function: cubic-bezier(0.06, 0.67, 0.24, 0.91);
   `,
   username: css`
     font-size: 1.25em;
@@ -165,17 +130,6 @@ const styles = {
     background-color: #424242;
     color: white;
   `,
-  climber: (spinner: Boolean) => css`
-    transition: 300ms;
-    opacity: 0;
-    ${spinner && ({
-      opacity: 0.3
-    })}
-  `,
-  movingto: css`
-    font-size: 1.25em;
-    line-height: 1.5em;
-  `
 };
 
 export default ProfileBox;

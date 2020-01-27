@@ -24,16 +24,7 @@ const RepositoryRowBottomIconSet = ({
       case "user":
         return <span css={styles.user} />;
       default:
-        return (
-          <span
-            css={[
-              styles.circle,
-              css`
-                background-color: ${ColorSet[type] || "black"};
-              `
-            ]}
-          />
-        );
+        return <span css={styles.circle(type)} />;
     }
   };
 
@@ -58,12 +49,13 @@ const styles = {
       display: flex;
     }
   `,
-  circle: css`
+  circle: (language: keyof typeof ColorSet) => css`
     display: block;
     width: 0.938em;
     height: 0.938em;
     border-radius: 50%;
     margin-right: 5px;
+    background-color: ${ColorSet[language] || "black"};
   `,
   icon: css`
     margin-right: 5px;

@@ -6,9 +6,9 @@ import api from "../utils/api";
 import ColorSet from "../styles/github-language-colors";
 import { majorName } from "../utils/major";
 
-interface IRepo {
+export interface IRepo {
   _id: string;
-  username: string;
+  name: string;
   department: keyof typeof majorName;
   year: string;
   githubid: string;
@@ -44,7 +44,7 @@ const Repository: React.FC = () => {
             stargazer={repository.stargazer.slice(0,5)}
             forked={repository.forkazger_count}
             user={{
-              name: repository.username,
+              name: repository.name,
               th: repository.year,
               major: repository.department
             }}

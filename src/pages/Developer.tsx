@@ -1,27 +1,42 @@
-import React from "react";
-import ProfileBox from "../components/ProfileBox";
+import React, { useEffect, useState } from "react";
 import css from "@emotion/css";
 import PageTitle from "../components/PageTitle";
+import api from "../utils/api";
+import { majorName } from "../utils/major";
+import DeveloperProfile from "../components/DeveloperProfile";
 
+export interface IDevelopers {
+  _id: string;
+  name: string;
+  githubid: string;
+  year: string;
+  department: keyof typeof majorName;
+  bio: string;
+  email: string;
+  followers: number;
+  public_repos: number;
+  total_stars: number;
+}
 const Developer: React.FC = () => {
+  const [developers, setDevelopers] = useState<Array<IDevelopers>>([]);
+
+  useEffect(() => {
+    api.get("/get/rankeduser").then(({ data }) => {
+      setDevelopers(data);
+    });
+  }, []);
+
   return (
     <>
       <PageTitle>개발자</PageTitle>
       <div
         css={css`
           display: flex;
-          flex-wrap: wrap;
-          height: fit-content;
-          margin-left: -0.625em;
-          margin-right: -0.625em;
         `}
       >
-        <ProfileBox name="이승민" username="yooonspace" th="19" major="WP" />
-        <ProfileBox name="이승민" username="yooonspace" th="19" major="HD" />
-        <ProfileBox name="이승민" username="yooonspace" th="19" major="DC" />
-        <ProfileBox name="이승민" username="yooonspace" th="19" major="EB" />
-        <ProfileBox name="이승민" username="yooonspace" th="19" major="WP" />
-        <ProfileBox name="이승민" username="yooonspace" th="19" major="HD" />
+        {developers.map(developer => (
+          <DeveloperProfile key={developer._id} {...developer} />
+        ))}
       </div>
     </>
   );

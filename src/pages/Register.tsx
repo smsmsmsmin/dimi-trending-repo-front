@@ -28,13 +28,6 @@ const Register: React.FC<RouteComponentProps> = props => {
     []
   );
 
-  const setAnimatedData = useCallback((name: string, value: string) => {
-    setInfo(p => ({
-      ...p,
-      [name]: value
-    }));
-  }, []);
-
   useEffect(() => {
     setValidation(!!(info.id && info.password));
   }, [info]);
@@ -55,39 +48,10 @@ const Register: React.FC<RouteComponentProps> = props => {
   };
 
   return (
-    <Box
-      css={css`
-        width: 50%;
-        margin: 0 auto;
-        @media (max-width: 767px) {
-          width: 100%;
-        }
-      `}
-    >
-      <div
-        css={css`
-          display: flex;
-          align-items: center;
-          margin-bottom: 3em;
-          flex-direction: column;
-          justify-content: center;
-        `}
-      >
-        <img
-          src={DimigoInLogo}
-          css={css`
-            width: 70px;
-            margin-bottom: 1.25em;
-          `}
-        />
-        <span
-          css={css`
-            font-size: 1.7em;
-            font-weight: 700;
-          `}
-        >
-          디미고인으로 로그인
-        </span>
+    <Box css={styles.box}>
+      <div css={styles.header}>
+        <img src={DimigoInLogo} alt="DIMIGOIN LOGO" css={styles.logo} />
+        <span css={styles.headerText}>디미고인으로 로그인</span>
       </div>
       <form onSubmit={handleSubmit}>
         <RegisterInput
@@ -105,13 +69,7 @@ const Register: React.FC<RouteComponentProps> = props => {
           placeholder="비밀번호"
           autoComplete="off"
         />
-        <div
-          css={css`
-            display: flex;
-            justify-content: flex-end;
-            padding-top: 3em;
-          `}
-        >
+        <div css={styles.buttonWrap}>
           <Button type="submit" disabled={false}>
             로그인
           </Button>
@@ -119,6 +77,36 @@ const Register: React.FC<RouteComponentProps> = props => {
       </form>
     </Box>
   );
+};
+
+const styles = {
+  box: css`
+    width: 50%;
+    margin: 0 auto;
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+  `,
+  header: css`
+    display: flex;
+    align-items: center;
+    margin-bottom: 3em;
+    flex-direction: column;
+    justify-content: center;
+  `,
+  logo: css`
+    width: 70px;
+    margin-bottom: 1.25em;
+  `,
+  headerText: css`
+    font-size: 1.7em;
+    font-weight: 700;
+  `,
+  buttonWrap: css`
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 3em;
+  `
 };
 
 export default Register;
