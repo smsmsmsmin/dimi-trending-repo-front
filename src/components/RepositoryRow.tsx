@@ -3,7 +3,6 @@ import css from "@emotion/css";
 import RepositoryRowBottomIconSet from "./RepositoryRowBottomIconSet";
 import ColorSet from "../styles/github-language-colors";
 import { majorName } from "../utils/major";
-import ClickPopDiv from "./ClickPop";
 import RepositoryRowBottomIconSetHover from "./RepositoryRowBottomIconSetHover";
 
 interface IProps {
@@ -12,6 +11,7 @@ interface IProps {
   language: keyof typeof ColorSet;
   description: string;
   star: number | string;
+  stargazer: Array<string>;
   forked: number | string;
   user: {
     th: string;
@@ -26,12 +26,13 @@ const RepositoryRow = ({
   language,
   description,
   star,
+  stargazer,
   forked,
   user,
   ...props
 }: IProps) => {
   return (
-    <ClickPopDiv css={styles.container}>
+    <div css={styles.container}>
       <div css={styles.leftWrap}>
         <a
           href={`https://github.com/${username}/${repository}`}
@@ -48,13 +49,7 @@ const RepositoryRow = ({
             {star}
             <RepositoryRowBottomIconSetHover
               name="Stargazer"
-              users={[
-                "yooonspace",
-                "cokia",
-                "header1213",
-                "reeactdev",
-                "Gijuno-Dev"
-              ]}
+              users={stargazer}
             />
           </RepositoryRowBottomIconSet>
           <RepositoryRowBottomIconSet type="forked">
@@ -72,7 +67,7 @@ const RepositoryRow = ({
           alt={`${username}'s profile`}
         />
       </a>
-    </ClickPopDiv>
+    </div>
   );
 };
 
@@ -91,11 +86,11 @@ const styles = {
       border: 0;
       padding-bottom: 0;
     }
-    & :hover {
-      transform: translateY(-3px);
-    }
   `,
   leftWrap: css`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     max-width: 80%;
     @media (max-width: 767px) {
       max-width: 100%;

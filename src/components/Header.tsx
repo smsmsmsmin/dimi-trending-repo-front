@@ -73,6 +73,7 @@ const styles = {
     flex-direction: row;
     align-items: center;
     padding: 1.875em 0;
+    
     @media (max-width: 767px) {
       padding: 1.25em 0;
       flex-direction: column;
@@ -127,9 +128,9 @@ const styles = {
     &.active {
       color: #E81572;
     }
-    &:hover:not(.active) {
-      color: #D660BB;
-    }
+    // &:hover:not(.active) {
+    //   color: #D660BB;
+    // }
   `
 };
 

@@ -20,8 +20,9 @@ const Button = ({
       font: inherit;
       font-size: 1.2rem;
       font-weight: 700;
-      background-color: ${disabled ? "#f0f0f0" : "#e81572"};
+      background-color: ${disabled ? "#f0f0f0" : "#e83c3d"};
       transition: 200ms box-shadow;
+      outline: none;
     `}
     {...props}
   />

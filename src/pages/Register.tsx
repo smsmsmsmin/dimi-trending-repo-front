@@ -1,30 +1,23 @@
 import React, { useCallback, useEffect, useState } from "react";
-import PageTitle from "../components/PageTitle";
 import Box from "../components/Box";
 import css from "@emotion/css";
 import Button from "../components/Button";
 import RegisterInput from "../components/RegisterInput";
-import PageDescription from "../components/PageDescription";
+import DimigoInLogo from "../assets/dimigoin.svg";
+import dimigoin from "../utils/dimigoin";
 import auth from "../utils/auth";
 import { RouteComponentProps } from "react-router";
-import api from "../utils/api";
-import SegmentedSelect from "../components/SegmentedSelect";
-import ClickPopDiv from "../components/ClickPop"
 
 interface IInfo {
-  name: string;
-  username: string;
-  th: string;
-  major: string;
+  id: string;
+  password: string;
 }
 
 const Register: React.FC<RouteComponentProps> = props => {
   const [validation, setValidation] = useState<boolean>(false);
   const [info, setInfo] = useState<IInfo>({
-    name: "",
-    username: "",
-    th: "",
-    major: ""
+    id: "",
+    password: ""
   });
 
   const handleChange = useCallback(
@@ -43,31 +36,19 @@ const Register: React.FC<RouteComponentProps> = props => {
   }, []);
 
   useEffect(() => {
-    setValidation(!(info.name && info.username));
-    console.log(info);
+    setValidation(!!(info.id && info.password));
   }, [info]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (info.name && info.username) {
-      api
-        .post("/useradd", {
-          params: {
-            name: info.name,
-            department: info.major,
-            year: info.th,
-            githubid: info.username
-          }
-        })
-        .then(r => {
-          console.log(r);
-          auth.setUserInfo(info);
-          alert("등록이 완료되었습니다.");
-          props.history.push("/repository");
-        })
-        .catch(e => {
-          console.log(e);
-        });
+    if (validation) {
+      const request = await dimigoin.getUserInfo(info);
+      if (request.data) {
+        await console.log(request);
+        await auth.setUserInfo(info);
+        await alert("등록이 완료되었습니다.");
+        await props.history.push("/repository");
+      }
     } else {
       alert("입력한 정보를 다시 한번 확인해주세요.");
     }
@@ -83,58 +64,58 @@ const Register: React.FC<RouteComponentProps> = props => {
         }
       `}
     >
-      <PageTitle type="center">디미고인이신가요?</PageTitle>
-      <PageDescription type="center" margin="2.5">
-        정보 수집을 위해 아래의 폼을 제출해주세요!
-      </PageDescription>
+      <div
+        css={css`
+          display: flex;
+          align-items: center;
+          margin-bottom: 3em;
+          flex-direction: column;
+          justify-content: center;
+        `}
+      >
+        <img
+          src={DimigoInLogo}
+          css={css`
+            width: 70px;
+            margin-bottom: 1.25em;
+          `}
+        />
+        <span
+          css={css`
+            font-size: 1.7em;
+            font-weight: 700;
+          `}
+        >
+          디미고인으로 로그인
+        </span>
+      </div>
       <form onSubmit={handleSubmit}>
         <RegisterInput
-          label="이름"
-          name="name"
-          value={info.name}
+          name="id"
+          value={info.id}
           onChange={handleChange}
+          placeholder="아이디"
+          autoComplete="off"
         />
         <RegisterInput
-          label="Github Username"
-          name="username"
-          inputLabel="@"
-          value={info.username}
+          name="password"
+          type="password"
+          value={info.password}
           onChange={handleChange}
+          placeholder="비밀번호"
+          autoComplete="off"
         />
-        <SegmentedSelect
-          label="기수"
-          name="th"
-          value={info.th}
-          onChange={setAnimatedData}
-          options={[
-            { value: "17", customLabel: "17기" },
-            { value: "18", customLabel: "18기" },
-            { value: "19", customLabel: "19기" }
-          ]}
-        />
-        <SegmentedSelect
-          label="학과"
-          name="major"
-          value={info.major}
-          onChange={setAnimatedData}
-          options={[
-            { value: "DC" },
-            { value: "EB" },
-            { value: "WP" },
-            { value: "HD" }
-          ]}
-        />
-        <ClickPopDiv
+        <div
           css={css`
             display: flex;
             justify-content: flex-end;
-            padding-top: 2.5em;
+            padding-top: 3em;
           `}
         >
-          <Button type="submit" disabled={validation}>
-            제출
+          <Button type="submit" disabled={false}>
+            로그인
           </Button>
-        </ClickPopDiv>
+        </div>
       </form>
     </Box>
   );

@@ -2,7 +2,6 @@ import React, {useState} from "react";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader"
 import css from "@emotion/css";
 import Box from "./Box";
-import ClickPopDiv from "./ClickPop";
 import { majorName } from "../utils/major";
 
 interface IProps {
@@ -22,7 +21,7 @@ const ProfileBox = (props: IProps) => {
     <a
       href={`https://github.com/${username}`}
       css={styles.container} onClick={click}>
-        <ClickPopDiv>
+        <div>
         <Box>
         {spinner && <ClimbingBoxLoader css={styles.climber(spinner)} />}
         <div css={[styles.imageWrap, disappearingAnimation.imageWrap(spinner)]}>
@@ -45,8 +44,8 @@ const ProfileBox = (props: IProps) => {
           {spinner && <span css={styles.movingto}>으로 이동하는중...</span>}
         </div>
       </Box>
-    
-        </ClickPopDiv>
+
+        </div>
       </a>
   );
 };

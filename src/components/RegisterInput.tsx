@@ -2,7 +2,7 @@ import React from "react";
 import css from "@emotion/css";
 
 interface IProps {
-  label: string;
+  label?: string;
   inputLabel?: string;
 }
 
@@ -17,7 +17,7 @@ const RegisterInput = ({
   >) => {
   return (
     <div css={styles.inputWrap}>
-      <span css={styles.label}>{label}</span>
+      {label && <span css={styles.label}>{label}</span>}
       <div css={styles.inputLabelWrap}>
         {inputLabel && <span css={styles.inputLabel}>{inputLabel}</span>}
         <input css={styles.input(!inputLabel)} type="text" {...props} />
@@ -52,6 +52,9 @@ const styles = {
     display: flex;
     flex-direction: column;
     margin-bottom: 1.25em;
+    & :last-child {
+      margin-bottom: 0;
+    }
   `,
   inputLabel: css`
     font-size: 1.25em;

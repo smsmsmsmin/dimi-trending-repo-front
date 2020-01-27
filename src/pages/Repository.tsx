@@ -41,6 +41,7 @@ const Repository: React.FC = () => {
             language={repository.language}
             description={repository.description}
             star={repository.stargazer_count}
+            stargazer={repository.stargazer.slice(0,5)}
             forked={repository.forkazger_count}
             user={{
               name: repository.username,
