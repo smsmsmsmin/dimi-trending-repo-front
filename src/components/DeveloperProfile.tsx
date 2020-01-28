@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "./Box";
 import { majorColor, majorName } from "../utils/major";
 import api from "../utils/api";
@@ -10,13 +10,15 @@ import DeveloperProfileRepositoryRow from "./DeveloperProfileRepositoryRow";
 const DeveloperProfile = (props: IDevelopers) => {
   const [repositorys, setRepositorys] = useState<Array<IRepo>>([]);
 
-  api
-    .get("/get/rankedrepo", {
-      params: { githubid: props.githubid }
-    })
-    .then(({ data }) => {
-      setRepositorys(data);
-    });
+  useEffect(() => {
+    api
+      .get("/get/userrankedrepo", {
+        params: { githubid: props.githubid }
+      })
+      .then(({ data }) => {
+        setRepositorys(data);
+      });
+  }, []);
 
   return (
     <Box key={props._id} css={styles.container}>
