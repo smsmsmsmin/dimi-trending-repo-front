@@ -38,6 +38,7 @@ const DeveloperProfile = (props: IDevelopers & {rank: number}) => {
         </div>
         <div css={styles.infoWrap}>
           <span css={styles.name}>{props.name}</span>
+          <span css={styles.username}>@{props.githubid}</span>
           <div css={styles.chipWrap}>
             <span css={styles.chip}>{props.year}기</span>
             <span
@@ -49,7 +50,6 @@ const DeveloperProfile = (props: IDevelopers & {rank: number}) => {
               {majorName[props.department]}
             </span>
           </div>
-          <span css={styles.username}>@{props.githubid}</span>
         </div>
       </div>
       <div css={styles.rightWrap}>
@@ -123,14 +123,16 @@ const styles = {
   name: css`
     display: block;
     font-size: 1.563rem;
+    margin-bottom: 0.25em;
     font-weight: 700;
-    margin-bottom: 0.625em;
     transition: 500ms;
     transition-timing-function: cubic-bezier(0.06, 0.67, 0.24, 0.91);
   `,
   username: css`
+    display: block;
     font-size: 1.25em;
     color: #666666;
+    margin-bottom: 0.625em;
     @media (max-width: 767px) {
       margin-bottom: 0;
     }
