@@ -35,8 +35,8 @@ const Developer: React.FC = () => {
           flex-direction: column;
         `}
       >
-        {developers.map(developer => (
-          <DeveloperProfile key={developer._id} {...developer} />
+        {developers.map((developer, rank) => (
+          <DeveloperProfile key={developer._id} {...developer} {...{rank}} />
         ))}
       </div>
     </>

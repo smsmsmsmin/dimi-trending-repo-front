@@ -7,7 +7,10 @@ import { IDevelopers } from "../pages/Developer";
 import { IRepo } from "../pages/Repository";
 import ColorSet from "../styles/github-language-colors";
 import DeveloperProfileRepositoryRow from "./DeveloperProfileRepositoryRow";
-const DeveloperProfile = (props: IDevelopers) => {
+import GoldMedal from '../assets/medal-gold.svg'
+import SilverMedal from '../assets/medal-silver.svg'
+import BronzeMedal from '../assets/medal-bronze.svg'
+const DeveloperProfile = (props: IDevelopers & {rank: number}) => {
   const [repositorys, setRepositorys] = useState<Array<IRepo>>([]);
 
   useEffect(() => {
@@ -24,6 +27,9 @@ const DeveloperProfile = (props: IDevelopers) => {
     <Box key={props._id} css={styles.container}>
       <div css={styles.leftWrap}>
         <div css={styles.imageWrap}>
+          {props.rank < 3 && <div css={styles.medalWrap}>
+            <img src={[GoldMedal, SilverMedal, BronzeMedal][props.rank]} css={styles.medal} />
+          </div>}
           <img
             src={`https://github.com/${props.githubid}.png`}
             css={styles.image}
@@ -97,6 +103,15 @@ const styles = {
     max-height: 100%;
     border-radius: 50%;
     opacity: 100%;
+  `,
+  medalWrap: css`
+    height: 0px;
+  `,
+  medal: css`
+    width: min(30%, 138px);
+    position: relative;
+    top: 1em;
+    left: min(70%, 320px);
   `,
   infoWrap: css`
     width: 100%;
