@@ -4,6 +4,9 @@ import RepositoryRowBottomIconSet from "./RepositoryRowBottomIconSet";
 import ColorSet from "../styles/github-language-colors";
 import { majorName } from "../utils/major";
 import RepositoryRowBottomIconSetHover from "./RepositoryRowBottomIconSetHover";
+import GoldMedal from '../assets/medal-gold.svg'
+import SilverMedal from '../assets/medal-silver.svg'
+import BronzeMedal from '../assets/medal-bronze.svg'
 
 interface IProps {
   username: string;
@@ -18,6 +21,7 @@ interface IProps {
     major: keyof typeof majorName;
     name: string;
   };
+  rank: number
 }
 
 const RepositoryRow = ({
@@ -29,6 +33,7 @@ const RepositoryRow = ({
   stargazer,
   forked,
   user,
+  rank,
   ...props
 }: IProps) => {
   return (
@@ -61,6 +66,9 @@ const RepositoryRow = ({
         </div>
       </div>
       <a href={`https://github.com/${username}`} css={styles.profileImageA}>
+      {rank < 3 && <div css={styles.medalWrap}>
+            <img src={[GoldMedal, SilverMedal, BronzeMedal][rank]} css={styles.medal} />
+          </div>}
         <img
           src={`https://github.com/${username}.png`}
           css={styles.profileImage}
@@ -118,6 +126,16 @@ const styles = {
   bottomWrap: css`
     display: flex;
     font-size: 0.875rem;
+  `
+  ,
+  medalWrap: css`
+    height: 0px;
+    position: relative;
+    top: 0.5em;
+    left: 4em;
+  `,
+  medal: css`
+    width: 42%;
   `,
   profileImageA: css`
     margin: auto 0;

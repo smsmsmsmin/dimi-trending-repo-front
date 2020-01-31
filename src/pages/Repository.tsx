@@ -6,6 +6,7 @@ import api from "../utils/api";
 import ColorSet from "../styles/github-language-colors";
 import { majorName } from "../utils/major";
 
+
 export interface IRepo {
   _id: string;
   name: string;
@@ -33,7 +34,7 @@ const Repository: React.FC = () => {
     <>
       <PageTitle>레포지토리</PageTitle>
       <Box>
-        {repository.map(repository => (
+        {repository.map((repository, rank) => (
           <RepositoryRow
             key={repository._id}
             username={repository.githubid}
@@ -48,6 +49,7 @@ const Repository: React.FC = () => {
               th: repository.year,
               major: repository.department
             }}
+            rank={rank}
           />
         ))}
       </Box>
