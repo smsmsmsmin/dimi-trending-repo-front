@@ -7,6 +7,10 @@ import DimigoInLogo from "../assets/dimigoin.svg";
 import dimigoin from "../utils/dimigoin";
 import auth from "../utils/auth";
 import { RouteComponentProps } from "react-router";
+import Swal from "sweetalert2";
+import { classToMajor, gradeToYear } from "../utils/convert";
+import api from "../utils/api";
+import SweetAlert from "../utils/swal";
 
 interface IInfo {
   id: string;
@@ -35,15 +39,36 @@ const Register: React.FC<RouteComponentProps> = props => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (validation) {
-      const request = await dimigoin.getUserInfo(info);
-      if (request.data) {
-        await console.log(request);
-        await auth.setUserInfo(info);
-        await alert("등록이 완료되었습니다.");
-        await props.history.push("/repository");
+      try {
+        const request = await dimigoin.getUserInfo(info);
+        if (request.data) {
+          const { data } = request;
+          await auth.setUserInfo(info);
+          const { value } = await Swal.fire({
+            title: "추가 정보 입력",
+            text: "자신의 Github Username(닉네임 아님)을 입력해주세요.",
+            icon: "info",
+            input: "text",
+            inputPlaceholder: "yooonspace",
+            confirmButtonText: "확인"
+          });
+          await api.post("/useradd", {
+            params: {
+              name: data.name,
+              department: classToMajor(data.klass),
+              year: gradeToYear(data.grade),
+              githubid: value,
+              dimigoinid: data.idx
+            }
+          });
+          await SweetAlert.success("성공적으로 등록이 완료되었습니다!");
+          await props.history.push("/repository");
+        } else {
+          await SweetAlert.error("입력한 정보를 다시 한번 확인해주세요.");
+        }
+      } catch (e) {
+        await SweetAlert.error("아이디나 비밀번호가 틀렸습니다.");
       }
-    } else {
-      alert("입력한 정보를 다시 한번 확인해주세요.");
     }
   };
 
