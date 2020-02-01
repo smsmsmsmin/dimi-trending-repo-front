@@ -7,7 +7,10 @@ import { IDevelopers } from "../pages/Developer";
 import { IRepo } from "../pages/Repository";
 import ColorSet from "../styles/github-language-colors";
 import DeveloperProfileRepositoryRow from "./DeveloperProfileRepositoryRow";
-const DeveloperProfile = (props: IDevelopers) => {
+import GoldMedal from '../assets/medal-gold.svg'
+import SilverMedal from '../assets/medal-silver.svg'
+import BronzeMedal from '../assets/medal-bronze.svg'
+const DeveloperProfile = (props: IDevelopers & {rank: number}) => {
   const [repositorys, setRepositorys] = useState<Array<IRepo>>([]);
 
   useEffect(() => {
@@ -24,6 +27,9 @@ const DeveloperProfile = (props: IDevelopers) => {
     <Box key={props._id} css={styles.container}>
       <div css={styles.leftWrap}>
         <div css={styles.imageWrap}>
+          {props.rank < 3 && <div css={styles.medalWrap}>
+            <img src={[GoldMedal, SilverMedal, BronzeMedal][props.rank]} css={styles.medal} />
+          </div>}
           <img
             src={`https://github.com/${props.githubid}.png`}
             css={styles.image}
@@ -32,6 +38,7 @@ const DeveloperProfile = (props: IDevelopers) => {
         </div>
         <div css={styles.infoWrap}>
           <span css={styles.name}>{props.name}</span>
+          <span css={styles.username}>@{props.githubid}</span>
           <div css={styles.chipWrap}>
             <span css={styles.chip}>{props.year}기</span>
             <span
@@ -43,7 +50,6 @@ const DeveloperProfile = (props: IDevelopers) => {
               {majorName[props.department]}
             </span>
           </div>
-          <span css={styles.username}>@{props.githubid}</span>
         </div>
       </div>
       <div css={styles.rightWrap}>
@@ -98,6 +104,15 @@ const styles = {
     border-radius: 50%;
     opacity: 100%;
   `,
+  medalWrap: css`
+    height: 0px;
+  `,
+  medal: css`
+    width: min(30%, 138px);
+    position: relative;
+    top: 1em;
+    left: min(70%, 320px);
+  `,
   infoWrap: css`
     width: 100%;
   `,
@@ -108,14 +123,16 @@ const styles = {
   name: css`
     display: block;
     font-size: 1.563rem;
+    margin-bottom: 0.25em;
     font-weight: 700;
-    margin-bottom: 0.625em;
     transition: 500ms;
     transition-timing-function: cubic-bezier(0.06, 0.67, 0.24, 0.91);
   `,
   username: css`
+    display: block;
     font-size: 1.25em;
     color: #666666;
+    margin-bottom: 0.625em;
     @media (max-width: 767px) {
       margin-bottom: 0;
     }
